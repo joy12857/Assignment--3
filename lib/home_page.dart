@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:project_63c/converter_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,63 +10,94 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
-        title: const Text(
-          "Homepage",
-          style: TextStyle(color: Colors.amber),
-        ),
+        title: Text("Homepage", style: TextStyle(color: Colors.amber)),
+        // leading: Icon(Icons.home, color: Colors.green),
+        // actions: [
+        //   IconButton(onPressed: () {}, icon: Icon(Icons.settings)),
+        //   IconButton(onPressed: () {}, icon: Icon(Icons.person_2_outlined)),
+        // ],
       ),
-
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.all(10),
-              child: Text("Hello section 63 C"),
-            ),
-
-            const Text("Welcome to the homepage"),
-
-            Container(
-              height: 300,
-              width: 400,
-              padding: const EdgeInsets.all(20),
-              margin: const EdgeInsets.all(20),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Colors.blueGrey,
-                border: Border.all(
-                  width: 5,
-                  color: Color.fromARGB(255, 24, 213, 62),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                "Hello 63C",
+                style: GoogleFonts.lobster(
+                  fontSize: 20,
+                  color: Colors.amber,
+                  fontWeight: FontWeight.bold,
                 ),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: const Text(
-                "Container 1",
-                style: TextStyle(color: Colors.white),
               ),
             ),
-
+            Text("Welcome to the homepage"),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return ConverterPage();
+                        },
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueGrey,
+                    foregroundColor: Colors.white,
+                    fixedSize: Size(120, 50),
+                  ),
+                  child: Text("Converter Page"),
+                ),
+                SizedBox(width: 10),
+                TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    side: BorderSide(color: Colors.blueGrey, width: 2),
+                  ),
+                  child: Text("TextButton"),
+                ),
+                OutlinedButton(onPressed: () {}, child: Text("Outlined")),
+                IconButton(onPressed: () {}, icon: Icon(Icons.logout)),
+              ],
+            ),
+            SizedBox(
+              height: 200,
+              width: 200,
+              child: Card(color: Colors.cyan, child: Text("Card")),
+            ),
             Container(
               height: 300,
               width: 400,
-              padding: const EdgeInsets.all(20),
-              margin: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
+              margin: EdgeInsets.all(20),
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: Colors.blueGrey,
                 border: Border.all(width: 5, color: Colors.cyan),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.all(Radius.circular(20)),
               ),
               // child: Image.asset("assets/images/flutter.png"),
-              child: const Text(
-                "Container 2",
-                style: TextStyle(color: Colors.white),
-              ),
             ),
-
             Image.network(
-              "https://flutter.dev/assets/homepage/carousel/slide_1-layer_0-6b9cfa6e.png",
-              height: 200,
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/960px-Image_created_with_a_mobile_phone.png",
+            ),
+            TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.brown,
+                foregroundColor: Colors.white,
+                elevation: 500,
+                side: BorderSide(color: Colors.black),
+                shadowColor: Colors.brown,
+                fixedSize: Size(100, 10),
+              ),
+              child: Text("Upolad"),
             ),
           ],
         ),
@@ -73,11 +106,11 @@ class HomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         foregroundColor: Colors.amber,
         onPressed: () {},
-        child: const Icon(Icons.add),
+        child: Icon(Icons.add),
       ),
 
       endDrawer: NavigationDrawer(
-        children: const [
+        children: [
           DrawerHeader(
             child: UserAccountsDrawerHeader(
               accountName: Text("Name"),
@@ -87,10 +120,12 @@ class HomePage extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.home),
             title: Text("Homepage"),
+            onTap: () {},
           ),
           ListTile(
             leading: Icon(Icons.person),
             title: Text("ProfilePage"),
+            onTap: () {},
           ),
         ],
       ),
